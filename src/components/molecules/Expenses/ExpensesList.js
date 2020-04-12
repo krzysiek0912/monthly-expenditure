@@ -56,7 +56,7 @@ const ExpenseList = ({
   }, {});
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Id ', field: 'id', type: 'string' },
+      { title: 'Id ', field: 'id', hidden: 'true', type: 'string' },
       { title: 'Name', field: 'name' },
       {
         title: 'Category',

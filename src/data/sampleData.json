@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "name": "Car insurance",
+    "category": "usj2n63itms",
+    "date": "2020-04-17T21:26:00.000Z",
+    "amount": 654,
+    "type": false,
+    "paid": false
+  },
+  {
+    "id": "2",
+    "name": "Bill for the Internet",
+    "category": "ase2n63itms",
+    "date": "2020-04-11T21:28:31.948Z",
+    "amount": 49,
+    "type": true,
+    "paid": false
+  },
+  {
+    "id": "3",
+    "name": "Property tax",
+    "category": "ase2n63itms",
+    "date": "2020-04-18T21:51:59.195Z",
+    "amount": 249.57,
+    "type": true,
+    "paid": true
+  },
+  {
+    "id": "4",
+    "name": "Eat",
+    "category": "zse24zaetms",
+    "date": "2020-04-11T21:52:24.272Z",
+    "amount": 1497,
+    "type": false,
+    "paid": false
+  },
+  {
+    "id": "45",
+    "name": "Computer",
+    "category": "zse24zaetms",
+    "date": "2020-04-01T21:52:24.272Z",
+    "amount": 1599,
+    "type": false,
+    "paid": true
+  },
+  {
+    "id": "9",
+    "name": "Training",
+    "category": "ase2n63itms",
+    "date": "2020-04-17T21:26:00.000Z",
+    "amount": 99,
+    "type": true,
+    "paid": true
+  },
+  {
+    "id": "8",
+    "name": "Fuel",
+    "category": "zse24zaetms",
+    "date": "2020-04-11T21:28:31.948Z",
+    "amount": "",
+    "type": false,
+    "paid": false
+  },
+  {
+    "id": "7",
+    "name": "Electricity bill",
+    "category": "ase2n63itms",
+    "date": "2020-04-18T21:51:59.195Z",
+    "amount": 159,
+    "type": true,
+    "paid": true
+  },
+  {
+    "id": "6",
+    "name": "Gas bill",
+    "category": "ase2n63itms",
+    "date": "2020-04-11T21:52:24.272Z",
+    "amount": 213,
+    "type": true,
+    "paid": false
+  },
+  {
+    "id": "46",
+    "name": "Toys",
+    "category": "zse24zaetms",
+    "date": "2020-04-02T21:52:24.272Z",
+    "amount": 154.25,
+    "type": "",
+    "paid": true
+  }
+]

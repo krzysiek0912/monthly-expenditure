@@ -50,6 +50,11 @@ export default function reducer(statePart = initialState, action = {}) {
           return item;
         }),
       };
+    case LOAD_SAMPLE_EXPENDITURE:
+      return {
+        ...statePart,
+        list: [...action.payload],
+      };
     default:
       return statePart;
   }
