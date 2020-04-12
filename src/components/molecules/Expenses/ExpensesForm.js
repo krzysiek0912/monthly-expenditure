@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
+import uid from 'uid';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Alert from '@material-ui/lab/Alert';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { DatePicker } from '@material-ui/pickers';
 import { useInput } from '../../../hook/useInput';
 import { useSwitch } from '../../../hook/useSwitch';
-import { getCategories } from '../../../reducers/categoriesReducer';
-import { addExpenditure } from '../../../reducers/expensesReducer';
+import { getCategories } from '../../../redux/categoriesReducer';
+import { addExpenditure } from '../../../redux/expensesReducer';
 
+const StyledAlert = styled(Alert)`
+  margin: 15px 0;
+`;
 const ExpenseForm = ({ categories, addExpenditure }) => {
   const { value: name, bind: bindName, reset: resetName } = useInput('');
   const { value: category, bind: bindCategory, reset: resetCategory } = useInput('');
@@ -29,20 +35,35 @@ const ExpenseForm = ({ categories, addExpenditure }) => {
     setDate(new Date());
     setIsSubmit(true);
   };
-  const categoriesOptions = categories.map(({ id, name }) => (
-    <MenuItem key={id} value={name}>
-      {name}
-    </MenuItem>
-  ));
   const handleSubmit = (e) => {
     e.preventDefault();
-    const expenditure = { name, category, amount, type, paid, date };
+    const id = uid();
+    const expenditure = { id, name, category, amount, type, paid, date };
     if (name !== '') {
       addExpenditure(expenditure);
       clearState();
     }
   };
-  return (
+  const handlerChangeSubmit = () => {
+    setIsSubmit(false);
+  };
+  const categoriesOptions = categories.map(({ id, name }) => (
+    <MenuItem key={id} value={id}>
+      {name}
+    </MenuItem>
+  ));
+  return isSubmit ? (
+    <>
+      <StyledAlert elevation={6} variant="filled" severity="success">
+        added expenditure{' '}
+      </StyledAlert>
+      <div onClick={handlerChangeSubmit}>
+        <Button type="submit" fullWidth variant="contained" color="primary">
+          Add next
+        </Button>
+      </div>
+    </>
+  ) : (
     <Container component="main" maxWidth="xs">
       <form autoComplete="off" onSubmit={handleSubmit}>
         <DatePicker
@@ -92,7 +113,6 @@ const ExpenseForm = ({ categories, addExpenditure }) => {
         {!type && (
           <FormControlLabel control={<Switch {...bindPaid} color="primary" />} label="Paid" />
         )}
-        {isSubmit && <p>added expenditure</p>}
         <Button type="submit" fullWidth variant="contained" color="primary">
           Add expense
         </Button>

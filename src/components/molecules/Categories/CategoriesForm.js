@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import uid from 'uid';
 import styled from 'styled-components';
-import { addCategory } from '../../../reducers/categoriesReducer';
+import { addCategory } from '../../../redux/categoriesReducer';
 
 const StyledButton = styled(Button)`
   line-height: 44px;
   border-radius: 0 4px 4px 0;
 `;
 const StyledTextField = styled(TextField)`
+  width: 100%;
   div {
     border-radius: 4px 0 0 4px;
   }
+`;
+const StyledForm = styled.form`
+  display: flex;
 `;
 const CategoriesForm = ({ addCategory }) => {
   const [categoryName, setCategoryName] = useState('');
@@ -30,7 +34,7 @@ const CategoriesForm = ({ addCategory }) => {
   };
   return (
     <div>
-      <form onSubmit={handleAddCategory} noValidate autoComplete="off">
+      <StyledForm onSubmit={handleAddCategory} noValidate autoComplete="off">
         <StyledTextField
           id="outlined-basic"
           value={categoryName}
@@ -41,7 +45,7 @@ const CategoriesForm = ({ addCategory }) => {
         <StyledButton type="submit" variant="contained" color="primary">
           Dodaj
         </StyledButton>
-      </form>
+      </StyledForm>
     </div>
   );
 };

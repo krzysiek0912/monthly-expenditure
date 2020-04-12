@@ -17,10 +17,11 @@ const categories =
   localStorage.getItem('state') !== null
     ? JSON.parse(localStorage.getItem('state')).categories
     : [];
-
+const categoriesList = categories?.list;
+const categoriesId = categories?.id;
 const initialState = {
-  list: categories.list || [],
-  ids: categories.id || [],
+  list: categoriesList || [],
+  ids: categoriesId || [],
 };
 
 /* THUNKS */

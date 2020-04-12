@@ -7,15 +7,20 @@ const createActionName = (name) => `app/${reducerName}/${name}`;
 
 export const ADD_EXPENDITURE = createActionName('ADD_EXPENDITURE');
 export const REMOVE_EXPENDITURE = createActionName('REMOVE_EXPENDITURE');
+export const UPDATE_EXPENDITURE = createActionName('UPDATE_EXPENDITURE');
+export const LOAD_SAMPLE_EXPENDITURE = createActionName('LOAD_SAMPLE_EXPENDITURE');
 
 /* ACTIONS */
 export const addExpenditure = (payload) => ({ payload, type: ADD_EXPENDITURE });
 export const removeExpenditure = (payload) => ({ payload, type: REMOVE_EXPENDITURE });
+export const updateExpenditure = (payload) => ({ payload, type: UPDATE_EXPENDITURE });
+export const loadSampleExpenditure = (payload) => ({ payload, type: LOAD_SAMPLE_EXPENDITURE });
 
-const expensesList =
-  localStorage.getItem('state') !== null
-    ? JSON.parse(localStorage.getItem('state')).expenses.list
-    : [];
+/* Thunk */
+
+const expenses =
+  localStorage.getItem('state') !== null ? JSON.parse(localStorage.getItem('state')).expenses : [];
+const expensesList = expenses?.list;
 
 const initialState = {
   list: expensesList,
@@ -33,7 +38,17 @@ export default function reducer(statePart = initialState, action = {}) {
     case REMOVE_EXPENDITURE:
       return {
         ...statePart,
-        list: [...statePart.list.filter((element) => !(element.id === action.payload))],
+        list: [...statePart.list.filter((item) => !(item.id === action.payload))],
+      };
+    case UPDATE_EXPENDITURE:
+      return {
+        ...statePart,
+        list: statePart.list.map((item) => {
+          if (item.id === action.payload.id) {
+            return { ...action.payload };
+          }
+          return item;
+        }),
       };
     default:
       return statePart;

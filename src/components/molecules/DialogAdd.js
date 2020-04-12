@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-import ExpanseForm from './Expense/ExpenseForm';
+import ExpanseForm from './Expenses/ExpensesForm';
 import styled from 'styled-components';
 
 const StyledDialog = styled.div`
@@ -29,6 +29,6 @@ const DialogAdd = (props) => {
 DialogAdd.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
+  selectedValue: PropTypes.bool.isRequired,
 };
 export default DialogAdd;

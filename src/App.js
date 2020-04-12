@@ -6,7 +6,8 @@ import Reports from './views/ReportsView';
 import Home from './views/HomeView';
 import { Route } from 'react-router-dom';
 import Categories from './views/CategoriesView';
-import AddExpense from './views/AddExpenseView';
+import Expense from './views/ExpenseView';
+import Settings from './views/SettingsView';
 // we need to map the `scale` prop we define below
 // to the transform style property
 function mapStyles(styles) {
@@ -54,7 +55,8 @@ const App = () => {
       >
         <Route exact path="/" component={Home} />
         <Route exact path="/reports" component={Reports} />
-        <Route exact path="/add" component={AddExpense} />
+        <Route exact path="/all" component={Expense} />
+        <Route exact path="/settings" component={Settings} />
         <Route exact path="/categories" component={Categories} />
       </AnimatedSwitch>
     </MainTheme>

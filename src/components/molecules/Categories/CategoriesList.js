@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import List from '@material-ui/core/List';
 import ListItem from '../../atoms/ListItem';
-import { getCategories, removeCategory } from '../../../reducers/categoriesReducer';
+import { getCategories, removeCategory } from '../../../redux/categoriesReducer';
 
 const CategoriesList = ({ categories, removeCategory }) => {
   const categoriesList = categories.map(({ name, id }) => (
