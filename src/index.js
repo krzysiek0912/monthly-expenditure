@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { Provider } from 'react-redux';
-import store from './reducers/store';
+import store from './redux/store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
-    </MuiPickersUtilsProvider>
-  </React.StrictMode>,
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </MuiPickersUtilsProvider>,
   document.getElementById('root'),
 );
 
