@@ -124,7 +124,7 @@ const ExpenseList = ({
             }, 600);
           })
             .then(() => {
-              const clearObj = { ...newData, id: uid() };
+              const clearObj = { ...newData, id: oldData.id };
               delete clearObj.tableData;
               updateExpenditure(clearObj);
             })
