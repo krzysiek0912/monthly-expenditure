@@ -51,7 +51,7 @@ const expenses =
 const expensesList = expenses?.list;
 
 const initialState = {
-  list: expensesList,
+  list: expensesList || [],
 };
 
 /* THUNKS */

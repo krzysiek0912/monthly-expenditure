@@ -10,7 +10,6 @@ export const sumAmount = (a, b) => {
 };
 
 export const dataToChart = (data) => {
-  let sum = 0;
   let curentDay = 0;
   let convertData = [];
   data.map(({ date, amount }) => {
@@ -20,7 +19,7 @@ export const dataToChart = (data) => {
       dataToUpdate.amount = sumAmount(dataToUpdate.amount, amount);
     } else {
       curentDay = day;
-      convertData = [...convertData, createData(day, sum)];
+      convertData = [...convertData, createData(day, amount)];
     }
     return;
   });

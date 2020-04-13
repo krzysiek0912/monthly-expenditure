@@ -97,7 +97,7 @@ const Reports = ({ getExpenses }) => {
   const [date, setDate] = useState(new Date());
   const dataDay = dataToChart(getExpenses(date));
   const data = dataToChartProgress(getExpenses(date));
-  console.log(data);
+  console.log('day', dataDay);
   return (
     <>
       <Grid container spacing={3}>
