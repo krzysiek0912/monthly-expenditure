@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import { connect } from 'react-redux';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import Title from '../atoms/Title';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
+import { useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { dataToChartProgress } from '../../utils';
-import Chart from '../molecules/Chart';
-import Orders from '../molecules/Orders';
-import Deposits from '../molecules/Deposits';
+import { dataToChart, dataToChartProgress } from '../../utils';
 import { getMontchAmount, getMontchExpenses } from '../../redux/expensesReducer';
+import Chart from '../molecules/Chart';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,31 +90,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = ({ getAmount, getExpenses }) => {
-  const [date, setDate] = useState(new Date());
+const Reports = ({ getExpenses }) => {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const amount = getAmount(date);
-  const orders = getExpenses(date, 'desc').filter((order) => !isNaN(parseFloat(order.amount)));
+  const theme = useTheme();
+  const [date, setDate] = useState(new Date());
+  const dataDay = dataToChart(getExpenses(date));
   const data = dataToChartProgress(getExpenses(date));
+  console.log(data);
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12} md={8} lg={9}>
-        <Paper className={fixedHeightPaper}>
-          <Chart data={data} title="Month" />
-        </Paper>
+    <>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={8} lg={9}>
+          <Paper className={fixedHeightPaper}>
+            <Chart data={data} title="Progress" />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={8} lg={9}>
+          <Paper>
+            <Title>Per Day</Title>
+            <BarChart width={730} height={250} data={dataDay}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="amount" fill="#8884d8" />
+            </BarChart>
+          </Paper>
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={4} lg={3}>
-        <Paper className={fixedHeightPaper}>
-          <Deposits amount={amount} date={date} />
-        </Paper>
-      </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Orders orders={orders} limit={5} />
-        </Paper>
-      </Grid>
-    </Grid>
+    </>
   );
 };
 
@@ -121,4 +128,4 @@ const mapStateToProps = (state) => ({
   getExpenses: (date, order) => getMontchExpenses(state, date, order),
   getAmount: (date) => getMontchAmount(state, date),
 });
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(Reports);

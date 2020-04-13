@@ -1,7 +1,8 @@
 import React from 'react';
+import Reports from '../components/organisms/Reports';
 
-const Reports = () => {
-  return <div>Reports</div>;
+const ReportsView = () => {
+  return <Reports></Reports>;
 };
 
-export default Reports;
+export default ReportsView;

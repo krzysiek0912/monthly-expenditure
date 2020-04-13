@@ -1,13 +1,22 @@
+import { sumAmount } from '../utils';
 /* SELECTORS */
 export const getExpenses = ({ expenses }) => expenses.list;
-export const getMontchExpenses = ({ expenses }, searchDate = new Date()) =>
-  expenses.list.filter(({ date }) => {
-    const expenseMonth = new Date(date).getMonth();
-    const expenseYear = new Date(date).getYear();
-    const month = searchDate.getMonth();
-    const year = searchDate.getYear();
-    return month === expenseMonth && year === expenseYear;
-  });
+export const getMontchExpenses = ({ expenses }, searchDate = new Date(), order = 'asc') =>
+  expenses.list
+    .filter(({ date }) => {
+      const expenseMonth = new Date(date).getMonth();
+      const expenseYear = new Date(date).getYear();
+      const month = searchDate.getMonth();
+      const year = searchDate.getYear();
+      return month === expenseMonth && year === expenseYear;
+    })
+    .sort((a, b) => {
+      const aDate = new Date(a.date).getDate();
+      const bDate = new Date(b.date).getDate();
+      if (order === 'desc') return bDate - aDate;
+      return aDate - bDate;
+    });
+
 export const getMontchAmount = ({ expenses }, searchDate = new Date()) => {
   const list = getMontchExpenses({ expenses }, searchDate);
   return list
@@ -15,8 +24,8 @@ export const getMontchAmount = ({ expenses }, searchDate = new Date()) => {
       return amount;
     })
     .reduce((prevValue, expenditure) => {
-      if (expenditure === '') expenditure = 0;
-      return +(parseFloat(expenditure) + prevValue).toFixed(2);
+      const sum = sumAmount(prevValue, expenditure);
+      return sum;
     }, 0);
 };
 
