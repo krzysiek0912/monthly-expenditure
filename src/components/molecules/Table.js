@@ -18,12 +18,7 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import MaterialTable from 'material-table';
 import { getCategories } from 'redux/categoriesReducer';
 import { errorRequest } from 'redux/requestReducer';
-import {
-  getExpenses,
-  addExpenditure,
-  updateExpenditure,
-  removeExpenditure,
-} from 'redux/expensesReducer';
+import { addExpenditure, updateExpenditure, removeExpenditure } from 'redux/expensesReducer';
 import uid from 'uid';
 
 const tableIcons = {
@@ -45,8 +40,9 @@ const tableIcons = {
   ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
-const ExpenseList = ({
+const Table = ({
   data,
+  title = '',
   categories,
   removeExpenditure,
   addExpenditure,
@@ -88,7 +84,7 @@ const ExpenseList = ({
   return (
     <MaterialTable
       icons={tableIcons}
-      title="All Expenses"
+      title={title}
       columns={state.columns}
       data={state.data}
       options={{
@@ -151,15 +147,14 @@ const ExpenseList = ({
   );
 };
 const mapStateToProps = (state) => ({
-  data: getExpenses(state),
   categories: getCategories(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addError: (error) => dispatch(errorRequest(error)),
-  addExpenditure: (data) => dispatch(addExpenditure(data)),
   updateExpenditure: (data) => dispatch(updateExpenditure(data)),
+  addExpenditure: (data) => dispatch(addExpenditure(data)),
   removeExpenditure: (id) => dispatch(removeExpenditure(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseList);
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

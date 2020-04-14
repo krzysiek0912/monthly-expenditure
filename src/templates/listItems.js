@@ -9,7 +9,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import { routes } from 'routes';
-const { home, reports, allExpense, categories, settings } = routes;
+const { home, reports, allExpense, categories, settings, confirm } = routes;
 export const mainListItems = (
   <div>
     <NavLink to={home.path}>
@@ -58,11 +58,13 @@ export const secondaryListItems = (
         <ListItemText primary={settings.title} />
       </ListItem>
     </NavLink>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem>
+    <NavLink to={confirm.path}>
+      <ListItem button>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary={confirm.title} />
+      </ListItem>
+    </NavLink>
   </div>
 );

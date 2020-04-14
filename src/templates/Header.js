@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,7 +12,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import DialogAdd from 'components/molecules/DialogAdd';
-
+import { getCountExpensesToConfirmed } from 'redux/expensesReducer';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -32,11 +34,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-const Header = ({ open, handleDrawerOpen }) => {
+const Header = ({ open, handleDrawerOpen, count }) => {
   const classes = useStyles();
+  let history = useHistory();
   const [openDialog, setOpenDialog] = React.useState(false);
   const handleToggleDialogAdd = () => {
     setOpenDialog(!openDialog);
+  };
+  const handleGoToConfirm = () => {
+    history.push('/confirm');
   };
   return (
     <>
@@ -57,10 +63,14 @@ const Header = ({ open, handleDrawerOpen }) => {
           <IconButton onClick={handleToggleDialogAdd} color="inherit">
             <AddCircleIcon color="inherit"></AddCircleIcon>
           </IconButton>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+          <IconButton onClick={handleGoToConfirm} color="inherit">
+            {count > 0 ? (
+              <Badge badgeContent={count} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            ) : (
               <NotificationsIcon />
-            </Badge>
+            )}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -69,4 +79,8 @@ const Header = ({ open, handleDrawerOpen }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  count: getCountExpensesToConfirmed(state),
+});
+
+export default connect(mapStateToProps)(Header);

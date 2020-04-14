@@ -28,6 +28,17 @@ export const getMonthAmount = ({ expenses }, searchDate = new Date()) => {
       return sum;
     }, 0);
 };
+export const getExpensesToConfirmed = ({ expenses }) => {
+  const curentDate = new Date().getTime();
+  const expensesToConfirmed = expenses.list.filter(({ date, type, paid }) => {
+    const expenditureDate = new Date(date).getTime();
+    return curentDate > expenditureDate && !paid && !type;
+  });
+  return expensesToConfirmed;
+};
+export const getCountExpensesToConfirmed = ({ expenses }) => {
+  return getExpensesToConfirmed({ expenses }).length;
+};
 
 // action name creator
 const reducerName = 'expenses';

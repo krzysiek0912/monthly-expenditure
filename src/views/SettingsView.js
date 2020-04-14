@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Settings from 'components/organisms/Settings';
 
-const settingsView = () => {
+const SettingsView = () => {
   return (
     <Container component="main" maxWidth="xs">
       <Settings></Settings>
@@ -10,4 +10,4 @@ const settingsView = () => {
   );
 };
 
-export default settingsView;
+export default SettingsView;

@@ -1,13 +1,15 @@
 import React from 'react';
 import { spring, AnimatedSwitch } from 'react-router-transition';
-import './App.css';
-import MainTheme from './templates/MainTheme';
-import Reports from './views/ReportsView';
-import Home from './views/HomeView';
 import { Route } from 'react-router-dom';
-import Categories from './views/CategoriesView';
-import Expense from './views/ExpenseView';
-import Settings from './views/SettingsView';
+import 'App.css';
+import MainTheme from 'templates/MainTheme';
+import Reports from 'views/ReportsView';
+import Home from 'views/HomeView';
+import Categories from 'views/CategoriesView';
+import Expense from 'views/ExpenseView';
+import Settings from 'views/SettingsView';
+import Confirm from 'views/ConfirmView';
+import { routes } from 'routes';
 // we need to map the `scale` prop we define below
 // to the transform style property
 function mapStyles(styles) {
@@ -53,11 +55,12 @@ const App = () => {
         mapStyles={mapStyles}
         className="route-wrapper"
       >
-        <Route exact path="/" component={Home} />
-        <Route exact path="/reports" component={Reports} />
-        <Route exact path="/all" component={Expense} />
-        <Route exact path="/settings" component={Settings} />
-        <Route exact path="/categories" component={Categories} />
+        <Route exact path={routes.home.path} component={Home} />
+        <Route exact path={routes.reports.path} component={Reports} />
+        <Route exact path={routes.allExpense.path} component={Expense} />
+        <Route exact path={routes.settings.path} component={Settings} />
+        <Route exact path={routes.categories.path} component={Categories} />
+        <Route exact path={routes.confirm.path} component={Confirm} />
       </AnimatedSwitch>
     </MainTheme>
   );

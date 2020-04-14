@@ -4,4 +4,5 @@ export const routes = {
   allExpense: { path: '/all', title: 'All Expense' },
   categories: { path: '/categories', title: 'Categories' },
   settings: { path: '/settings', title: 'Settings' },
+  confirm: { path: '/confirm', title: 'Confirm' },
 };
