@@ -8,7 +8,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import { routes } from '../routes';
+import { routes } from 'routes';
 const { home, reports, allExpense, categories, settings } = routes;
 export const mainListItems = (
   <div>

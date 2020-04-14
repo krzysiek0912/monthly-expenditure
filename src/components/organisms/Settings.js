@@ -4,10 +4,10 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
-import sampleData from '../../data/sampleData.json';
-import sampelCategories from '../../data/sampelCategories.json';
-import { loadSampleCategory } from '../../redux/categoriesReducer';
-import { loadSampleExpenditure } from '../../redux/expensesReducer';
+import sampleData from 'data/sampleData.json';
+import sampelCategories from 'data/sampelCategories.json';
+import { loadSampleCategory } from 'redux/categoriesReducer';
+import { loadSampleExpenditure } from 'redux/expensesReducer';
 
 const useStyles = makeStyles((theme) => ({
   root: {

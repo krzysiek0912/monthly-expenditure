@@ -1,5 +1,5 @@
 import React from 'react';
-import ExpenseList from '../components/molecules/Expenses/ExpensesList';
+import ExpenseList from 'components/molecules/Expenses/ExpensesList';
 
 const ExpenseView = () => {
   return (

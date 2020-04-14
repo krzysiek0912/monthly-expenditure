@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Title from '../atoms/Title';
+import Title from 'components/atoms/Title';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import withDate from '../../hoc/withDate';
-import { dataToChart, dataToChartProgress } from '../../utils';
-import { getMonthAmount, getMonthExpenses } from '../../redux/expensesReducer';
-import Chart from '../molecules/Chart';
+import withDate from 'hoc/withDate';
+import { dataToChart, dataToChartProgress } from 'utils';
+import { getMonthAmount, getMonthExpenses } from 'redux/expensesReducer';
+import Chart from 'components/molecules/Chart';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

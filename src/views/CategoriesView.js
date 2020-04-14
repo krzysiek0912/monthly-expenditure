@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import CategoriesList from '../components/molecules/Categories/CategoriesList';
-import CategoriesForm from '../components/molecules/Categories/CategoriesForm';
+import CategoriesList from 'components/molecules/Categories/CategoriesList';
+import CategoriesForm from 'components/molecules/Categories/CategoriesForm';
 
 const CategoriesView = () => {
   return (

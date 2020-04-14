@@ -10,10 +10,10 @@ import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { DatePicker } from '@material-ui/pickers';
-import { useInput } from '../../../hook/useInput';
-import { useSwitch } from '../../../hook/useSwitch';
-import { getCategories } from '../../../redux/categoriesReducer';
-import { addExpenditure } from '../../../redux/expensesReducer';
+import { useInput } from 'hook/useInput';
+import { useSwitch } from 'hook/useSwitch';
+import { getCategories } from 'redux/categoriesReducer';
+import { addExpenditure } from 'redux/expensesReducer';
 
 const StyledAlert = styled(Alert)`
   margin: 15px 0;

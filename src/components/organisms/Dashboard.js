@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import withDate from '../../hoc/withDate';
-import { dataToChartProgress } from '../../utils';
-import Chart from '../molecules/Chart';
-import Orders from '../molecules/Orders';
-import Deposits from '../molecules/Deposits';
-import { getMonthAmount, getMonthExpenses } from '../../redux/expensesReducer';
+import withDate from 'hoc/withDate';
+import { dataToChartProgress } from 'utils';
+import Chart from 'components/molecules/Chart';
+import Orders from 'components/molecules/Orders';
+import Deposits from 'components/molecules/Deposits';
+import { getMonthAmount, getMonthExpenses } from 'redux/expensesReducer';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {

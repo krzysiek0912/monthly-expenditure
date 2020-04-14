@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import uid from 'uid';
 import styled from 'styled-components';
-import { addCategory } from '../../../redux/categoriesReducer';
+import { addCategory } from 'redux/categoriesReducer';
 
 const StyledButton = styled(Button)`
   line-height: 44px;

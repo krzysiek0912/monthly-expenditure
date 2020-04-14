@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Title from '../components/atoms/Title';
-import CustomToolbar from '../components/atoms/CustomToolbar';
+import Title from 'components/atoms/Title';
+import CustomToolbar from 'components/atoms/CustomToolbar';
 import { DatePicker } from '@material-ui/pickers';
 import styled from 'styled-components';
 

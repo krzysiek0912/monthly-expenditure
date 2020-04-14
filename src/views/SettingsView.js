@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import Settings from '../components/organisms/Settings';
+import Settings from 'components/organisms/Settings';
 
 const settingsView = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import Reports from '../components/organisms/Reports';
+import Reports from 'components/organisms/Reports';
 
 const ReportsView = () => {
   return <Reports></Reports>;

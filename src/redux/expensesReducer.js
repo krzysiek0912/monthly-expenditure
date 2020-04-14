@@ -1,4 +1,4 @@
-import { sumAmount } from '../utils';
+import { sumAmount } from 'utils';
 /* SELECTORS */
 export const getExpenses = ({ expenses }) => expenses.list;
 export const getMonthExpenses = ({ expenses }, searchDate = new Date(), order = 'asc') =>

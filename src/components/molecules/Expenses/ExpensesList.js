@@ -16,14 +16,14 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import MaterialTable from 'material-table';
-import { getCategories } from '../../../redux/categoriesReducer';
-import { errorRequest } from '../../../redux/requestReducer';
+import { getCategories } from 'redux/categoriesReducer';
+import { errorRequest } from 'redux/requestReducer';
 import {
   getExpenses,
   addExpenditure,
   updateExpenditure,
   removeExpenditure,
-} from '../../../redux/expensesReducer';
+} from 'redux/expensesReducer';
 import uid from 'uid';
 
 const tableIcons = {
