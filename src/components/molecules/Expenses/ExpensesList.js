@@ -17,6 +17,7 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import MaterialTable from 'material-table';
 import { getCategories } from '../../../redux/categoriesReducer';
+import { errorRequest } from '../../../redux/requestReducer';
 import {
   getExpenses,
   addExpenditure,
@@ -50,6 +51,7 @@ const ExpenseList = ({
   removeExpenditure,
   addExpenditure,
   updateExpenditure,
+  addError,
 }) => {
   const categoriesList = categories.reduce((accumulator, item) => {
     return { ...accumulator, [item.id]: item.name };
@@ -109,7 +111,7 @@ const ExpenseList = ({
               delete clearObj.tableData;
               addExpenditure(clearObj);
             })
-            .catch((error) => console.log('', error)),
+            .catch((error) => addError(error)),
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve) => {
             setTimeout(() => {
@@ -128,7 +130,7 @@ const ExpenseList = ({
               delete clearObj.tableData;
               updateExpenditure(clearObj);
             })
-            .catch((error) => console.log('', error)),
+            .catch((error) => addError(error)),
         onRowDelete: (oldData) =>
           new Promise((resolve) => {
             setTimeout(() => {
@@ -143,7 +145,7 @@ const ExpenseList = ({
             .then(({ id }) => {
               removeExpenditure(id);
             })
-            .catch((error) => console.log('', error)),
+            .catch((error) => addError(error)),
       }}
     />
   );
@@ -154,6 +156,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addError: (error) => dispatch(errorRequest(error)),
   addExpenditure: (data) => dispatch(addExpenditure(data)),
   updateExpenditure: (data) => dispatch(updateExpenditure(data)),
   removeExpenditure: (id) => dispatch(removeExpenditure(id)),

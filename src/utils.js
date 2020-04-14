@@ -1,3 +1,22 @@
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+export const formatedDate = (date) => {
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  return `${monthNames[month]} ${year}`;
+};
 export const createData = (day, amount) => {
   return { day, amount };
 };
@@ -21,7 +40,7 @@ export const dataToChart = (data) => {
       curentDay = day;
       convertData = [...convertData, createData(day, amount)];
     }
-    return;
+    return null;
   });
   return convertData;
 };
@@ -40,6 +59,7 @@ export const dataToChartProgress = (data) => {
       curentDay = day;
       convertData = [...convertData, createData(day, sum)];
     }
+    return null;
   });
   return convertData;
 };

@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Orders = ({ orders, limit }) => {
   const classes = useStyles();
-  console.log('ordes', orders);
   orders = orders.slice(0, limit);
   return (
     <>

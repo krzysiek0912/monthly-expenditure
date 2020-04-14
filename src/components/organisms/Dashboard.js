@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import withDate from '../../hoc/withDate';
 import { dataToChartProgress } from '../../utils';
 import Chart from '../molecules/Chart';
 import Orders from '../molecules/Orders';
@@ -89,8 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = ({ getAmount, getExpenses }) => {
-  const [date, setDate] = useState(new Date());
+const Dashboard = ({ getAmount, getExpenses, date }) => {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const amount = getAmount(date);
@@ -121,4 +121,4 @@ const mapStateToProps = (state) => ({
   getExpenses: (date, order) => getMontchExpenses(state, date, order),
   getAmount: (date) => getMontchAmount(state, date),
 });
-export default connect(mapStateToProps)(Dashboard);
+export default withDate(connect(mapStateToProps)(Dashboard));
