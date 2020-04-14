@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import withDate from '../../hoc/withDate';
 import { dataToChart, dataToChartProgress } from '../../utils';
-import { getMontchAmount, getMontchExpenses } from '../../redux/expensesReducer';
+import { getMonthAmount, getMonthExpenses } from '../../redux/expensesReducer';
 import Chart from '../molecules/Chart';
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +55,7 @@ const Reports = ({ getExpenses, date }) => {
 };
 
 const mapStateToProps = (state) => ({
-  getExpenses: (date, order) => getMontchExpenses(state, date, order),
-  getAmount: (date) => getMontchAmount(state, date),
+  getExpenses: (date, order) => getMonthExpenses(state, date, order),
+  getAmount: (date) => getMonthAmount(state, date),
 });
 export default withDate(connect(mapStateToProps)(Reports));

@@ -9,7 +9,7 @@ import { dataToChartProgress } from '../../utils';
 import Chart from '../molecules/Chart';
 import Orders from '../molecules/Orders';
 import Deposits from '../molecules/Deposits';
-import { getMontchAmount, getMontchExpenses } from '../../redux/expensesReducer';
+import { getMonthAmount, getMonthExpenses } from '../../redux/expensesReducer';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -118,7 +118,7 @@ const Dashboard = ({ getAmount, getExpenses, date }) => {
 };
 
 const mapStateToProps = (state) => ({
-  getExpenses: (date, order) => getMontchExpenses(state, date, order),
-  getAmount: (date) => getMontchAmount(state, date),
+  getExpenses: (date, order) => getMonthExpenses(state, date, order),
+  getAmount: (date) => getMonthAmount(state, date),
 });
 export default withDate(connect(mapStateToProps)(Dashboard));

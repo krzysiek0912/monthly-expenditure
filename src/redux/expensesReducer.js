@@ -1,7 +1,7 @@
 import { sumAmount } from '../utils';
 /* SELECTORS */
 export const getExpenses = ({ expenses }) => expenses.list;
-export const getMontchExpenses = ({ expenses }, searchDate = new Date(), order = 'asc') =>
+export const getMonthExpenses = ({ expenses }, searchDate = new Date(), order = 'asc') =>
   expenses.list
     .filter(({ date }) => {
       const expenseMonth = new Date(date).getMonth();
@@ -17,8 +17,8 @@ export const getMontchExpenses = ({ expenses }, searchDate = new Date(), order =
       return aDate - bDate;
     });
 
-export const getMontchAmount = ({ expenses }, searchDate = new Date()) => {
-  const list = getMontchExpenses({ expenses }, searchDate);
+export const getMonthAmount = ({ expenses }, searchDate = new Date()) => {
+  const list = getMonthExpenses({ expenses }, searchDate);
   return list
     .map(({ amount }) => {
       return amount;
